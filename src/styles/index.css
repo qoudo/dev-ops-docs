@@ -1,0 +1,13 @@
+@import url('../vendor/normalize.css');
+@import url('../vendor/fonts.css');
+@import url('page/page.css');
+@import url('header/header.css');
+@import url('content/content.css');
+@import url('footer/footer.css');
+@import url('profile/profile.css');
+@import url('places/places.css');
+@import url('card/card.css');
+@import url('popup/popup.css');
+@import url('popup/_is-animated/popup_is-animated.css');
+@import url('popup/_is-opened/popup_is-opened.css');
+

@@ -1,2 +1,2 @@
-# -Optimization-methods
+# Optimization-methods
 Лабораторные работы по дисциплине "Методы оптимизации"

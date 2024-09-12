@@ -123,3 +123,60 @@ server {
      }
 }
 ```
+Выполним комбинацию нажатий клавиш Ctrl + S (save - сохранить) и Ctrl + X (exit - выйти, закрыть редактор).
+Но на этом не всё нам следует ещё настроить основную конфигурацию nginx.conf. Выполним команду:
+```bash
+cd .. && sudo nano nginx.conf
+```
+
+Настроем нашу конфигурацию, добавим две строчки описанные комментарием:
+```nginx
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    # Ограничим количество HTTP-запросов от пользователей в определенный промежуток времени.
+    # Полезно для усиления безопасности веб-сервера, например, для замедления перебора паролей злоумышленником 
+    # или для предотвращения DDoS-атак
+    limit_req_zone $binary_remote_addr zone=req_limit:10m rate=5r/s;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+    
+    # Включим сжатия данных. Это позволяет уменьшить размер передаваемых данных между сервером и клиентом, 
+    # что ускоряет загрузку страниц и экономит трафик.
+    # При желании можно добавить дополнительные параметры gzip, ознакомиться с нми можно в документации nginx.
+    gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+}
+```
+Сохраняем изменения и выходим из редактора. Проверим нашу конфигурацию на наличие ошибок:
+```bash
+sudo nginx -t
+```
+В случаи успеха мы увидим сообщение:
+```
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+```

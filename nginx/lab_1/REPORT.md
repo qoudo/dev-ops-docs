@@ -19,7 +19,7 @@
 Так же, если ввести в адресной строке браузера `localhost`, то должна отобразиться приветственная страница _Nginx_:
 
 
-![Welcome to nginx](./img/1.png)
+![Welcome to nginx](img/1.png)
 
 ### 2. Подготовка проектов
 
@@ -33,7 +33,7 @@ npm run build
 Следующим шагом нам следует скопировать директорию проекта в `/var/www/` для этого выполним следующую команду для 
 каждого билда:
 ```bash
-sudo cp -r ../../home/qoudo/optimization-methods/lab_1/project_2 project2.com 
+sudo cp -r ../../home/qoudo/optimization-methods/lab_2/project_2 project2.com 
 ```
 Путь и название файлов у вас может отличаться. В данном случаи команда выполняется в `/var/www/`.
 
@@ -210,24 +210,24 @@ sudo systemctl restart ngin
 ```
 Откроем браузер и введем в адресную строку: `local.project1.com`. Мы должны попасть на главную страницу нашего сервиса:
 
-![mesto](./img/2.png)
+![mesto](img/2.png)
 
 Проверим работу нашего алиаса перейдя по адресу: `local.project1.com/images/like-inactive.49570bcb1d637fdb38e5.svg`.
 И увидим _svg_ изображение из нашего сервиса.
 
-![alias](./img/6.png)
+![alias](img/6.png)
 
 Аналогично проверим второй сервис по адресу `local.project2.com`:
 
-![Hello world](./img/5.png)
+![Hello world](img/5.png)
 
 Можем заметить, что браузер ругается: _адрес не защищен_, т.к. у нас не действительный сертификат:
 
-![not protected](./img/3.png)
+![not protected](img/3.png)
 
 В данный момент для нас это не критично, сейчас нам главное убедиться, что он подключен:
 
-![certificate info](./img/4.png)
+![certificate info](img/4.png)
 
 ## Вывод
 
@@ -238,3 +238,6 @@ sudo systemctl restart ngin
  - Создавать самописные _SSL_ сертификаты;
  - Добавлять ограничения/защиту для сервера от DDoS-атак, пускай посредственную, но хоть какую;
  - Узнали для чего применяется директива _gzip_.
+
+
+[назад](../NGINX.md) | [меню](../../README.md) | [вперёд](../lab_1*/REPORT.md)

@@ -1,6 +1,6 @@
 # Optimization-methods
-Лабораторные работы по дисциплине "Методы оптимизации"
-prox
+Лабораторные работы по дисциплине "Методы оптимизации" и "Облачные технологии и услуги"
+
 Repository: https://github.com/qoudo/optimization-methods
 
 ## Навигация

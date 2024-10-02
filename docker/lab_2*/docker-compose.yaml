@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web1:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./service_1:/usr/share/nginx/html
+
+  web2:
+    image: nginx
+    ports:
+      - "81:80"
+    volumes:
+      - ./service_2:/usr/share/nginx/html
+    depends_on:
+      - service_1

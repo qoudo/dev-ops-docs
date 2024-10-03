@@ -101,7 +101,7 @@ exemple/
 ├── service_2/
 │    ├── index.html
 │    └── Dockerfile
-└── Dockerfile
+└── docker-compose.yaml
 ```
 
 Настроим конфигурацию и не забудем добавить любое приветствие в наши `.html` файлы, что бы различить контейнеры.

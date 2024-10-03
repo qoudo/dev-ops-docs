@@ -13,14 +13,14 @@
 ```yaml
 version: '3'
 services:
-  web1:
+  service:
     image: nginx
     ports:
       - "80:80"
     volumes:
       - ./service_1:/usr/share/nginx/html
 
-  web2:
+  service2:
     image: nginx
     ports:
       - "81:80"
@@ -45,7 +45,7 @@ services:
 ```yaml
 version: '3.8'
 services:
-  web1:
+  service1:
     image: nginx:1.21.3-alpine
     ports:
       - "8081:80"
@@ -54,7 +54,7 @@ services:
     networks:
       - service1-net
 
-  web2:
+  service2:
     image: nginx:1.21.3-alpine
     ports:
       - "8082:80"
@@ -76,6 +76,8 @@ networks:
 
 3. **Зависимость одних сервисов от других без надобности:** Удаление `depends_on` для повышения автономности сервисов. 
 Упрощает параллельный запуск сервисов и уменьшает временную зависимость одного от другого.
+
+> Так же хорошим тоном было бы использовать ограничение ресурсов и переменные, что бы избежать дублирования.
 
 ### Запуск контейнера
 
@@ -104,7 +106,31 @@ exemple/
 
 Настроит конфигурацию и не забудем добавить любое приветствие в наши `.html` файлы, что бы различить контейнеры.
 Конфигурацию для _Dockerfile_ можно взять из [первой лабораторной работы](../lab_2/Dockerfile), а для 
-_docker-compose_ выше.
+_docker-compose_ ниже:
+
+```yaml
+version: '3.9'
+services:
+  service1:
+    build:
+      context: ./service_1
+    ports:
+      - "8081:80"
+    networks:
+      - service1-net
+
+  service2:
+    build:
+      context: ./service_2
+    ports:
+      - "8082:80"
+    networks:
+      - service2-net
+
+networks:
+  service1-net:
+  service2-net:
+```
 
 Теперь в директории, где лежит _docker-compose_ файл выполняем команду:
 ```bash

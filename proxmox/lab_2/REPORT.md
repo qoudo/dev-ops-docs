@@ -111,16 +111,16 @@ pvesh create /nodes/proxmox/lxc -vmid 101 -hostname nextcloud -unprivileged true
 Для этого перейдите в браузере по адресу https://localhost/ — там вы увидите ошибку сервиса, так как _Nextcloud_ не
 смог найти _Redis_.
 
-![Изображение](???)
+![Изображение](./img/17.png)
 
 Вернитесь в консоль _Nextcloud_, откройте файл `/var/www/nextcloud/config/config.php` и замените адрес _Redis_ на
 IP/port из 2 шага. Также отключите `Memcache`, удалив строку с `memcache.local`.
 
-![Изображение](./img/17.png)
+![Изображение](./img/18.png)
 
 Вернитесь в браузер и убедитесь, что теперь форма входа в _Nextcloud_ открывается без ошибок.
 
-![Изображение](???)
+![Изображение](./img/19.png)
 
 На этом знакомство с контейнерами в _Proxmox_ завершено.
 

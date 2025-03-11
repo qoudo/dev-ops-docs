@@ -1,7 +1,7 @@
-# Optimization-methods
-Лабораторные работы по дисциплине "Методы оптимизации" и "Облачные технологии и услуги"
+# Documentations DevOps
+Документация и пошаговая инструкция по использованию различных инстурментов DevOps
 
-Repository: https://github.com/qoudo/optimization-methods
+Repository: https://github.com/qoudo/dev-ops-docs
 
 ## Навигация
 

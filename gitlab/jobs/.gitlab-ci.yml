@@ -1,0 +1,44 @@
+stages:
+  - build
+  - test
+  - deploy
+
+deploy-job:
+  stage: deploy
+  image: tmaier/docker-compose:latest
+  variables:
+    DOCKER_DRIVER: overlay2
+  tags:
+    - docker_0910
+  script:
+    - echo "Deploying application..."
+    - ls -la
+    - docker-compose rm -sf
+    - docker-compose up -d
+    - echo "Application successfully deployed!"
+  only:
+    - main
+    - develop
+
+clear-job:
+  stage: deploy
+  image: tmaier/docker-compose:latest
+  variables:
+    DOCKER_DRIVER: overlay2
+  tags:
+    - docker_0910
+  script:
+    - docker-compose rm -sf
+  when: manual
+  only:
+    - main
+    - develop
+
+test-job:
+  stage: test
+  image: alpine
+  script:
+    - echo "Running synthetic test..."
+    - if [ ! -d "./airflow" ]; then exit 1; fi
+    - echo "Test passed!"
+  allow_failure: false

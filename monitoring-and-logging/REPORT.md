@@ -136,3 +136,46 @@ php occ config:system:set trusted_domains 1 --value=“nextcloud”
 
 ### Часть 3. Настройка визуализации.
 
+Установим плагина _Zabbix_ для _Grafana_:
+- Выполните в терминале: `docker exec -it grafana bash -c "grafana cli plugins install alexanderzobnin-zabbix-app"`;
+- Перезапустите _Grafana_: `docker restart grafana`.
+
+![Изображение](img/14.png)
+
+Активируем плагин в _Grafana_:
+- Откройте _Grafana_ по адресу http://localhost:3000/;
+- Перейдите в `Administration → Plugins`;
+- Найдите плагин _Zabbix_ и включите его (**Enable**).
+
+![Изображение](img/15.png)
+
+Настройка подключения _Loki_:
+- В Grafana перейдите в _Connections → Data sources → Loki_;
+- Укажите имя и адрес: http://loki:3100;
+- Остальные настройки оставьте по умолчанию;
+- Нажмите `Save & Test`.
+
+Если на этапе тестирования (Save & Test) нет ошибок и система предлагает перейти к визуализации данных, 
+значит интеграция настроена корректно.
+
+![Изображение](img/16.png)
+![Изображение](img/17.png)
+
+Настройка подключения Zabbix:
+- Добавьте новый источник данных (**Data source**);
+- Выберите _Zabbix_;
+- Укажите URL: http://zabbix-front:8082/api_jsonrpc.php;
+- Заполните `Username` и `Password`;
+- Проверьте подключение через `Save & Test`.
+
+![Изображение](img/18.png)
+![Изображение](img/19.png)
+
+Проверка работы:
+- Перейдите в `Explore`;
+- Установите все необходимые фильтры;
+- Проверьте отображение данных.
+
+![Изображение](img/20.png)
+
+**Готово!**

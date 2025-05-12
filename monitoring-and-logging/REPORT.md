@@ -180,13 +180,13 @@ php occ config:system:set trusted_domains 1 --value=“nextcloud”
 
 **Готово!**
 
-### Задание.
+## Задание.
 
 1. "Поиграться" с запросами.
 2. Создать два простеньких дашборда в _Grafana_ с использованием датасурсов _Zabbix_ и _Loki_.
 
-#### Создание дашбордов в Grafana для мониторинга Nextcloud.
-##### Дашборд 1: Статус Nextcloud (с использованием Zabbix).
+### Создание дашбордов в Grafana для мониторинга Nextcloud.
+#### Дашборд 1: Статус Nextcloud (с использованием Zabbix).
 
 Этот дашборд будет показывать текущий статус _Nextcloud_ в виде цветной плашки, меняющей цвет в зависимости от состояния 
 сервиса.
@@ -222,7 +222,7 @@ php occ config:system:set trusted_domains 1 --value=“nextcloud”
   - **Text size**: "Title" установите большой размер;
   - **Background mode**: "Gradient".
 
-##### Дашборд 2: Логи Nextcloud (с использованием Loki).
+#### Дашборд 2: Логи Nextcloud (с использованием Loki).
 
 Этот дашборд будет отображать логи _Nextcloud_ в виде таблицы для мониторинга событий в системе.
 
@@ -252,7 +252,7 @@ php occ config:system:set trusted_domains 1 --value=“nextcloud”
 
 ![Изображение](img/21.png)
 
-### Вопрос - ответ.
+## Вопрос - ответ.
 
 1. В чем разница между мониторингом и observability?
 
@@ -265,7 +265,7 @@ php occ config:system:set trusted_domains 1 --value=“nextcloud”
   к этому привела.
 </details>
 
-### Вывод.
+## Вывод.
 
 В результате мы научились настраивать систему мониторинга и логирования для сервиса _Nextcloud_ с последующей 
 визуализацией данных в _Grafana_.

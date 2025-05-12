@@ -1,4 +1,4 @@
-# Лабораторная работа №2 - Loki + Zabbix + Grafana
+# Лабораторная работа №3 - Loki + Zabbix + Grafana
 
 ## Цель работы
 
